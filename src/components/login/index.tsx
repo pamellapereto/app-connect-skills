@@ -37,7 +37,7 @@ export function Login() {
       if (email.toLowerCase() === "aluno@teste.com" && password === "123@senac") {
         console.log("Login simulado com sucesso!");
         // Quando quiser, pode redirecionar:
-        // router.replace("/(tabs)");
+        router.replace("/(tabs)");
       } else {
         setLoginError("E-mail ou senha inválidos!");
       }

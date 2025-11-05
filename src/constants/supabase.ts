@@ -1,0 +1,2 @@
+export const SUPA_URL = "https://dqtihwyrhsyycvpeuoyb.supabase.co";
+export const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxdGlod3lyaHN5eWN2cGV1b3liIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwNTI3NzMsImV4cCI6MjA3NTYyODc3M30.DwGOT06Imew_OHM_hHBckFWl7E6TOKzYmuAXgWTto8A";

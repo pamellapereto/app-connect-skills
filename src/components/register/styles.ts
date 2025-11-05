@@ -1,18 +1,20 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: "#ffffff" },
   keyboardAvoiding: { flex: 1 },
   container: {
     flexGrow: 1,
-    paddingHorizontal: 24,
+    paddingHorizontal: width * 0.08,
     paddingTop: 16,
-    paddingBottom: 32,
+    paddingBottom: width * 0.2,
     backgroundColor: "#ffffff",
   },
 
   // Header
-  header: { alignItems: "center", marginBottom: 16 },
+  header: { alignItems: "center", marginVertical: width * 0.1},
   brand: { fontSize: 14, color: "#6b7280", letterSpacing: 1, textTransform: "uppercase" as const },
   title: { fontSize: 28, fontWeight: "800", color: "#111827", marginTop: 4 },
   subtitle: { fontSize: 14, color: "#6b7280", marginTop: 6, textAlign: "center" },
@@ -59,29 +61,6 @@ export const styles = StyleSheet.create({
 
   inputError: { borderColor: "#dc2626" },
   fieldError: { color: "#dc2626", fontSize: 12, marginTop: 6 },
-
-  // Força da senha
-  strengthRow: { flexDirection: "row", alignItems: "center", marginTop: 8, gap: 6 },
-  strengthBar: { flex: 1, height: 6, backgroundColor: "#e5e7eb", borderRadius: 999 },
-  strengthBarOn: { backgroundColor: "#10b981" },
-  strengthLabel: { marginLeft: 8, fontSize: 12, color: "#6b7280" },
-
-  // Termos
-  termsRow: { flexDirection: "row", alignItems: "center", marginTop: 8 },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#d1d5db",
-    marginRight: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-  checkboxOn: { backgroundColor: "#111827", borderColor: "#111827" },
-  termsText: { flex: 1, color: "#4b5563", fontSize: 13 },
-  link: { color: "#3b82f6", fontWeight: "700" },
 
   // Botões
   primaryButton: {
