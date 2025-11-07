@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -28,9 +29,9 @@ export function Register() {
   const [loading, setLoading] = useState(false);
   const [erroGlobal, setErroGlobal] = useState("");
 
-
   const canSubmit =
     nome.trim() &&
+    email.trim() &&
     senha.length >= 6 &&
     confirmarSenha === senha &&
     !loading;
@@ -39,10 +40,17 @@ export function Register() {
     try {
       setLoading(true);
       setErroGlobal("");
-      await new Promise((r) => setTimeout(r, 800));
-      {/* Sucesso simulado
-      Aqui será conectado no serviço real (ex.: signUpUser(nome, email, senha))
-      router.replace("/(tabs)"); */}
+      const {data, error} = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
+        password: senha,
+        options: {
+            data: {name: nome.trim()}
+        },
+      });
+      if (error) {
+        setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
+      }
+      router.replace("./(auth)/index");
     } catch {
       setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
     } finally {
@@ -181,7 +189,7 @@ export function Register() {
             {!!erroGlobal && <Text style={styles.loginError}>{erroGlobal}</Text>}
 
             {/* Voltar para Login */}
-            <TouchableOpacity style={styles.backToLogin} onPress={() => router.push("/(auth)/login")}>
+            <TouchableOpacity style={styles.backToLogin} onPress={() => router.back()}>
               <Ionicons name="arrow-back" size={16} color="#111827" />
               <Text style={styles.backToLoginText}>Voltar para login</Text>
             </TouchableOpacity>
