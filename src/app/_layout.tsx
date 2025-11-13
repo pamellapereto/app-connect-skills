@@ -13,10 +13,10 @@ useEffect(() => {
       setAuth({user: session?.user ?? null, session: session ?? null});
       if (session?.user) {
         // ROTA LOGADA: direcionar para (tabs)
-        router.replace("./(tabs)");
+        router.replace("/(tabs)/home");           //Corrigida a rota
       }
       else {
-        router.replace("./(auth)/index");
+        router.replace("/(auth)");                //Corrigida a rota
       }
     });  
 
@@ -24,10 +24,10 @@ useEffect(() => {
   const { data: sup } = supabase.auth.onAuthStateChange((_event, session) => { 
     setAuth({user: session?.user ?? null, session: session ?? null});
     if (session?.user) {
-      router.replace("./(tabs)");
+      router.replace("/(tabs)/home");           //Corrigida a rota
     }
     else {
-      router.replace("./(auth)/index");
+      router.replace("/(auth)");                //Corrigida a rota    
     }
   });
   return () => {

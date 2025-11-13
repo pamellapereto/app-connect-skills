@@ -130,7 +130,7 @@ export function Login() {
             {!!loginError && <Text style={styles.loginError}>{loginError}</Text>}
 
             {/* Ações secundárias (opcional) */}
-            <TouchableOpacity onPress={() => router.push("./(auth)/register")}>
+            <TouchableOpacity onPress={() => router.push("/(auth)/register")}>
               <Text style={styles.signUpText}>
                 Não possui uma conta? <Text style={styles.signUpLink}>Cadastre-se</Text>
               </Text>
