@@ -49,8 +49,9 @@ export function Register() {
       });
       if (error) {
         setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
+        return;
       }
-      router.replace("./(auth)/index");
+      // router.replace("../(auth)");
     } catch {
       setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
     } finally {

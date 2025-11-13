@@ -1,48 +1,17 @@
-import { AuthProvider, useAuth } from "@/contexts/authContext";
-import { supabase } from "@/lib/supabase";
-import { Stack, useRouter } from "expo-router";
-import { useEffect } from "react";
+import { AuthProvider } from "@/contexts/authContext";
+import { Slot } from "expo-router";
+import { View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 /*Redicionamento automático de acordo com a sessão*/
 function MainLayout() {
-  const router = useRouter();
-  const {setAuth} = useAuth();
-
-useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session }}) => {
-      setAuth({user: session?.user ?? null, session: session ?? null});
-      if (session?.user) {
-        // ROTA LOGADA: direcionar para (tabs)
-        router.replace("/(tabs)/home");           //Corrigida a rota
-      }
-      else {
-        router.replace("/(auth)");                //Corrigida a rota
-      }
-    });  
-
-//Monitorar a mudança de sessão => por exemplo: quando loga, quando faz logout
-  const { data: sup } = supabase.auth.onAuthStateChange((_event, session) => { 
-    setAuth({user: session?.user ?? null, session: session ?? null});
-    if (session?.user) {
-      router.replace("/(tabs)/home");           //Corrigida a rota
-    }
-    else {
-      router.replace("/(auth)");                //Corrigida a rota    
-    }
-  });
-  return () => {
-    sup.subscription.unsubscribe();
-  };
-}, []);
-
   return (
-    <Stack screenOptions={{headerShown: false}}>
-      {/*SplashScreen: carregamento dos dados enquanto se decide a rota */}
-
-      {/*Grupos existentes no aplicativo */}
-      <Stack.Screen name="(auth)"/>
-      <Stack.Screen name="(tabs)"/>
-      </Stack>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
+                    <Slot />
+                </View>
+            </GestureHandlerRootView>
+      
   );
 }
 
