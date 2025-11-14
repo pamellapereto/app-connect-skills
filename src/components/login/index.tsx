@@ -26,20 +26,21 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  const canSubmit = email.trim() !== "" && password.trim() !== "" && !loading;
+  const canSubmit = email.trim() && password.trim() && !loading;
 
-  const handleSignIn = async () => {
+ const handleSignIn = async () => {
    try {
          setLoading(true);
          setLoginError("");
-         const {data, error} = await supabase.auth.signInWithPassword({
-           email: email.trim().toLowerCase(),
+         const {error} = await supabase.auth.signInWithPassword({
+           email,
            password, 
          });
+         // Login com sucesso
          if (error) {
            setLoginError(error.message || "E-mail ou senha inválidos!");
-           return;
          }
+         router.replace("./(tabs)");
        } catch {
          setLoginError("Não foi possível logar. Tente novamente.");
        } finally {

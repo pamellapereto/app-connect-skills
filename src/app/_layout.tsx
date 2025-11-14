@@ -11,10 +11,8 @@ function MainLayout() {
                     <Slot />
                 </View>
             </GestureHandlerRootView>
-      
   );
 }
-
 export default function Root() {
   return (
   <AuthProvider>

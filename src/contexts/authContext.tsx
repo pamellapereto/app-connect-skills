@@ -30,7 +30,7 @@ export function AuthProvider({ children } : { children: React.ReactNode }) {
         setUser(session?.user ?? null);
 
         if (session) {
-          router.replace("/(tabs)/index");
+          router.replace("./(tabs)");
         } else {
           router.replace("/(auth)");
         }

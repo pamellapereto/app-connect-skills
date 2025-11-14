@@ -41,17 +41,18 @@ export function Register() {
       setLoading(true);
       setErroGlobal("");
       const {data, error} = await supabase.auth.signUp({
-        email: email.trim().toLowerCase(),
+        email: email,
         password: senha,
         options: {
-            data: {name: nome.trim()}
+            data: {nome: nome.trim()}
         },
       });
       if (error) {
         setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
         return;
       }
-      // router.replace("../(auth)");
+      router.replace("/(auth)");
+      return data;
     } catch {
       setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
     } finally {

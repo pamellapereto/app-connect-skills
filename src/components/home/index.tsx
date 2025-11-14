@@ -16,7 +16,8 @@ export function Home() {
   const handleSwipeLeft = () => alert('❌ Rejeitado!'); 
  
   return ( 
-    <View /*style={styles.container}*/> 
+    <View>
+      <Text>Teste</Text>
     </View> 
   ); 
 } 
