@@ -28,24 +28,25 @@ export function Login() {
 
   const canSubmit = email.trim() && password.trim() && !loading;
 
- const handleSignIn = async () => {
-   try {
-         setLoading(true);
-         setLoginError("");
-         const {error} = await supabase.auth.signInWithPassword({
-           email,
-           password, 
-         });
-         // Login com sucesso
-         if (error) {
-           setLoginError(error.message || "E-mail ou senha inválidos!");
-         }
-         router.replace("./(tabs)");
-       } catch {
-         setLoginError("Não foi possível logar. Tente novamente.");
-       } finally {
-         setLoading(false);
-       }
+  const handleSignIn = async () => {
+    try {
+      setLoading(true);
+      setLoginError("");
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setLoginError(error.message || "E-mail ou senha inválidos!");
+      }
+      // Login com sucesso
+      router.replace("/(tabs)"); {/* aqui estava: router.replace(./(tabs)");*/ }
+    } catch (e: any) {
+      setLoginError(e.message || "Não foi possível logar. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
  
 const UserCard = () => ( 
   <View /*style={styles.card}*/> 
@@ -16,8 +17,8 @@ export function Home() {
   const handleSwipeLeft = () => alert('❌ Rejeitado!'); 
  
   return ( 
-    <View>
-      <Text>Teste</Text>
-    </View> 
+    <SafeAreaView>
+      <Text>Tela home</Text>
+    </SafeAreaView> 
   ); 
 } 

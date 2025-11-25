@@ -12,8 +12,9 @@ export default function TabLayout() {
       }} 
     > 
       <Tabs.Screen 
-        name="index" 
-        options={{ 
+        name="index"
+        options={{
+          tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => ( 
             <Ionicons name="home-outline" color={color} size={size} /> 
           ), 

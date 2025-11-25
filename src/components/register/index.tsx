@@ -40,21 +40,21 @@ export function Register() {
     try {
       setLoading(true);
       setErroGlobal("");
-      const {data, error} = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: email,
         password: senha,
         options: {
-            data: {nome: nome.trim()}
+          data: { nome: nome.trim() }
         },
       });
       if (error) {
-        setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
+        setErroGlobal(error.message || "Falha ao cadastrar. Verifique a validação dos campos!");
         return;
       }
-      router.replace("/(auth)");
+      router.replace("/(auth)"); // Redireciona para a tela de login após o cadastro
       return data;
-    } catch {
-      setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
+    } catch (e: any) {
+      setErroGlobal(e.message || "Falha ao cadastrar. Tente novamente.");
     } finally {
       setLoading(false);
     }
