@@ -22,13 +22,20 @@ O foco está nos **módulos e funções que operam a comunicação com o Supabas
 
 ### 1.2 Esquema lógico do fluxo
 App Start
+
 └─ app/_layout.tsx
+
 ├─ <AuthProvider> (contexts/authContext.tsx)
+
 ├─ supabase.auth.getSession()
+
 ├─ supabase.auth.onAuthStateChange()
+
 └─ Decide rota:
 ├─ (auth) → login / register
+
 └─ (tabs) → home / perfil / etc.
+
 
 
 ---
