@@ -51,7 +51,7 @@ export function Register() {
         setErroGlobal(error.message || "Falha ao cadastrar. Verifique a validação dos campos!");
         return;
       }
-      router.replace("/(auth)"); // Redireciona para a tela de login após o cadastro
+      router.replace("/(auth)"); // Alterar redirecionamento para /(auth)/datauser
       return data;
     } catch (e: any) {
       setErroGlobal(e.message || "Falha ao cadastrar. Tente novamente.");
